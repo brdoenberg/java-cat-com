@@ -8,7 +8,7 @@ type LayoutContainerProps = {
 
 export default function LayoutContainer({children, fixedWidth = false, className} : LayoutContainerProps) {
   const getClassName = () => {
-    return `w-full p-4 ${className ?? ''}${fixedWidth ? ' max-w-[1440px]' : ''}`;
+    return `w-full p-4 ${className ?? ''}${fixedWidth ? ' max-w-[1280px]' : ''}`;
   }
   return (
     <div className={'w-full flex justify-center'}>

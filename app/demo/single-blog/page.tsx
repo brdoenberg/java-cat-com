@@ -1,9 +1,7 @@
 import LayoutContainer from "@/components/layouts/layout-container";
 import {
   Card,
-  HorizontalCard,
-  PlainText,
-  PortfolioCard
+  PlainText
 } from "@/components/blocks";
 import {
   ProgressBar,
@@ -13,20 +11,19 @@ import {
   TextInput,
   TextHeader
 } from "@/components/eleements";
-import { FadeIn, ZoomIn } from "@/components/effects";
+import { FadeIn } from "@/components/effects";
 import {
   BsFiletypeDocx,
   BsFiletypePdf
 } from "react-icons/bs";
-import Link from "next/link";
 
 const progressValues = Array.from({length: 4}, () => 25 + Math.random() * 65);
 
-export default function Home() {
+export default function SingleBlogPage() {
   return (
     <main>
-      <LayoutContainer fixedWidth className={'grid gap-4 lg:grid-cols-[400px_1fr]'}>
-        <div className={'order-2 lg:order-1 relative'}>
+      <LayoutContainer fixedWidth className={'grid gap-4 lg:grid-cols-[350px_1px_1fr]'}>
+        <div className={'order-3 lg:order-1 relative'}>
           <div className={'flex gap-4 flex-col top-4 sticky'}>
             <Card>
               <TextHeader level={6}>Get In Touch</TextHeader>
@@ -46,7 +43,10 @@ export default function Home() {
             </Card>
           </div>
         </div>
-        <div className={'flex flex-col gap-4 order-1 lg:order-2'}>
+        <div className={'hidden lg:block order-2 bg-[#aaa] my-4  w-px'}></div>
+        <div className={'flex flex-col gap-4 order-1 lg:order-3'}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={'https://picsum.photos/800/600'} alt={'Hello World'} className={'w-full aspect-5/3 object-cover'} />
           <PlainText
             className={'flex flex-col gap-4'}
             html={
@@ -70,16 +70,26 @@ export default function Home() {
             odio. </p>
           <div className={'flex flex-col gap-2'}>
             {Array.from({length: 4}).map((_, i) => (
-              <ProgressBar title={'Progress'} key={i} progress={progressValues[i]} />
+            <ProgressBar title={'Progress'} key={i} progress={progressValues[i]} />
           ))}
           </div>
+          <p>Cras gravida pellentesque mollis. Nulla euismod leo eu augue lacinia vestibulum. Sed justo lorem,
+            tristique nec euismod id, vehicula ac lectus. Nunc varius eleifend quam non porttitor. Nunc quis vulputate
+            sapien. Fusce viverra consequat tellus vitae varius. Nunc laoreet justo nec nulla luctus interdum. Mauris
+            eu felis vel urna eleifend sagittis. Phasellus consectetur dolor pretium, vulputate mauris eget, feugiat
+            odio. </p>
           <QuoteBlock>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut libero tellus. Morbi vel enim turpis.
-              Nam rhoncus elementum arcu, ut dictum diam consectetur at. Sed facilisis odio ut velit pulvinar, vitae
-              lacinia risus varius. Suspendisse tortor felis, lobortis eget neque eget, pretium maximus nisl. Sed eu dui
-              sodales, porta odio nec, ultricies tortor. Ut egestas massa quis venenatis lobortis. Suspendisse potenti.
-              Nunc non ligula tempus, dictum quam ac, tempor felis. </p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut libero tellus. Morbi vel enim turpis.
+            Nam rhoncus elementum arcu, ut dictum diam consectetur at. Sed facilisis odio ut velit pulvinar, vitae
+            lacinia risus varius. Suspendisse tortor felis, lobortis eget neque eget, pretium maximus nisl. Sed eu dui
+            sodales, porta odio nec, ultricies tortor. Ut egestas massa quis venenatis lobortis. Suspendisse potenti.
+            Nunc non ligula tempus, dictum quam ac, tempor felis. </p>
           </QuoteBlock>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut libero tellus. Morbi vel enim turpis.
+            Nam rhoncus elementum arcu, ut dictum diam consectetur at. Sed facilisis odio ut velit pulvinar, vitae
+            lacinia risus varius. Suspendisse tortor felis, lobortis eget neque eget, pretium maximus nisl. Sed eu dui
+            sodales, porta odio nec, ultricies tortor. Ut egestas massa quis venenatis lobortis. Suspendisse potenti.
+            Nunc non ligula tempus, dictum quam ac, tempor felis. </p>
           <div className={'grid grid-cols-4 gap-4'}>
             <StyledButton>Button 1</StyledButton>
             <StyledButton>Button 2</StyledButton>
@@ -98,8 +108,8 @@ export default function Home() {
                   odio. </p>
               </div>
               <div className={'flex flex-col gap-4'}>
-                {Array.from({length: 5}).map((_, i) => (
-                  <TextAccordion key={i} title={'Accordion'} open={i === 2}>
+                {Array.from({length: 3}).map((_, i) => (
+                  <TextAccordion key={i} title={'Accordion'} open={i === 1}>
                     <p> Phasellus ut viverra neque. Donec condimentum mauris vitae lectus aliquet suscipit. Sed eget
                       aliquet neque. Pellentesque lobortis lorem ac ipsum imperdiet, quis imperdiet sem pretium. Curabitur
                       est libero, feugiat ac varius dictum, venenatis ac purus. Vestibulum tristique mauris diam, in
@@ -108,7 +118,7 @@ export default function Home() {
                 ))}
               </div>
               <div className={'flex flex-col gap-4'}>
-                {Array.from({length: 5}).map((_, i) => (
+                {Array.from({length: 2}).map((_, i) => (
                   <TextAccordion key={i} title={'Accordion'}>
                     <p> Phasellus ut viverra neque. Donec condimentum mauris vitae lectus aliquet suscipit. Sed eget
                       aliquet neque. Pellentesque lobortis lorem ac ipsum imperdiet, quis imperdiet sem pretium. Curabitur
@@ -120,39 +130,6 @@ export default function Home() {
             </div>
           </FadeIn>
         </div>
-      </LayoutContainer>
-      <LayoutContainer fixedWidth className={'flex flex-col gap-4'}>
-        <FadeIn className={'flex flex-col gap-4'}>
-          <TextHeader level={3}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</TextHeader>
-          <hr className={'mx-2'}/>
-          <div className={'grid grid-cols-3 gap-4'}>
-            {Array.from({length: 5}).map((_, i) => (
-              <PortfolioCard
-                key={i}
-               title="Project Name"
-               description="Short description"
-               detail="Extended detail shown on hover"
-               href="#" />
-            ))}
-          </div>
-        </FadeIn>
-        <hr className={'mt-4 m-2'}/>
-        <div className={'flex flex-col gap-4'}>
-          <TextHeader level={3}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</TextHeader>
-          <div className={'grid grid-cols-2 gap-4'}>
-            {Array.from({length: 5}).map((_, i) => (
-              <ZoomIn key={i}>
-                <HorizontalCard>
-                  <TextHeader level={4}>Project Name</TextHeader>
-                  <p>Short description</p>
-                  <Link href="#">Learn More</Link>
-                </HorizontalCard>
-              </ZoomIn>
-            ))}
-          </div>
-        </div>
-        <hr className={'mt-4 m-2'}/>
-
       </LayoutContainer>
     </main>
   );

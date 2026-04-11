@@ -26,9 +26,6 @@ const options: HTMLReactParserOptions = {
 };
 
 export function PlainText({html, className}: PlainTextProps) {
-
-  console.log('boop voop');
-
   return (
     <div className={className}>
       {parse(html, options)}

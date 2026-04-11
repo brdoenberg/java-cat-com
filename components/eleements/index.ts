@@ -1,4 +1,3 @@
-export * from './fade-in';
 export * from './progress-bar';
 export * from './quote-block';
 export * from './styled-button';
