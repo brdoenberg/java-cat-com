@@ -4,20 +4,7 @@ import {VerticalBlogCard} from "@/components/blocks/vertical-blog-card";
 import {CtaBar} from "@/components/sections/cta_bar";
 import {PageHeader} from "@/components/sections/page-header";
 import {TextHeader} from "@/components/eleements";
-
-const getBlogPosts = async () => {
-  const res = await fetch('https://jsonfakery.com/blogs/random/9');
-  return await res.json().then((posts: any) => {
-    return posts.map((post: any) => {
-      return {
-        ...post,
-        thumbnail: `https://picsum.photos/seed/${post.id}/800/600`,
-        created_at: new Date(post.created_at),
-        permalink: `/demo/single-blog`
-      }
-    })
-  });
-}
+import {generateBlogPosts} from "@/lib/placeholder-blog";
 
 const ctaBarHtml : string  = '<h4>Join Our Community</h4>\n' +
   '            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut libero tellus. Morbi vel enim turpis.\n' +
@@ -30,8 +17,8 @@ const ctaBarLinks : Array<{ title : string }> = [
 const pageTitle = 'Archive Blog';
 const pageDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut libero tellus. Morbi vel enim turpis. Nam rhoncus elementum arcu, ut dictum diam consectetur at.';
 
-export default async function ArchiveBlog() {
-  const blogPosts = await getBlogPosts();
+export default function ArchiveBlog() {
+  const blogPosts = generateBlogPosts(9);
 
   return (
     <main>
@@ -44,7 +31,7 @@ export default async function ArchiveBlog() {
           <FeaturedBlogCard post={blogPosts[0]} className={'lg:w-1/2 min-h-125'} />
           <div className={'lg:w-1/2 flex flex-col gap-4'}>
             {blogPosts.slice(1,3).map(
-              (post: any, index: number) => <HorizontalBlogCard key={index} post={post} className={'grow'} />
+              (post, index: number) => <HorizontalBlogCard key={index} post={post} className={'grow'} />
             )}
           </div>
         </div>
@@ -55,7 +42,7 @@ export default async function ArchiveBlog() {
           <TextHeader level={3}>Latest Blog Posts</TextHeader>
         </div>
         <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'}>
-          {blogPosts.slice(2,-1).map((post: any, index: number) => <VerticalBlogCard key={index} post={post} /> )}
+          {blogPosts.slice(2,-1).map((post, index: number) => <VerticalBlogCard key={index} post={post} /> )}
         </div>
       </LayoutContainer>
       <CtaBar text={ctaBarHtml} links={ctaBarLinks}/>
